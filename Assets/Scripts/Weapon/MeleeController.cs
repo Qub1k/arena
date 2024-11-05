@@ -1,4 +1,6 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class MeleeController : MonoBehaviour
 {
@@ -21,19 +23,21 @@ public class MeleeController : MonoBehaviour
 
     void Update()
     {
-        float mousePos = Input.mousePosition.y;
+        var mousePos = Mouse.current.position.ReadValue();
+        float mousePosY = mousePos.y;
+
 
         if (Input.GetMouseButtonDown(0))
         { 
-            if (mousePos > 630) anim.SetTrigger("highHit");
-            else if (mousePos < 450) Debug.Log("no animation yet");
+            if (mousePosY > 630) anim.SetTrigger("highHit");
+            else if (mousePosY < 450) Debug.Log("no animation yet");
             else anim.SetTrigger("middleHit");
         }
 
 
 
-        if (mousePos > 630) angle = Mathf.PI/8;
-        else if (mousePos < 450) angle = -Mathf.PI / 8;
+        if (mousePosY > 630) angle = Mathf.PI/8;
+        else if (mousePosY < 450) angle = -Mathf.PI / 8;
         else angle = 0;
 
         Quaternion targetRotation = Quaternion.Euler(transform.parent.rotation.x, transform.parent.rotation.y, 

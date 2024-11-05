@@ -23,7 +23,6 @@ public class DamageCollider : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log("thy");
         if (col.CompareTag("Hittable"))
         {
             var Character = col.GetComponent<CharacterStats>();
