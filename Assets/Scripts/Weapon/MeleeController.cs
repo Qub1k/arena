@@ -13,7 +13,6 @@ public class MeleeController : MonoBehaviour
     private string currentAnimation;
 
     private float angle;
-    private int posIndex = 2;
 
     void Start()
     {
@@ -23,18 +22,15 @@ public class MeleeController : MonoBehaviour
 
     void Update()
     {
-        var mousePos = Mouse.current.position.ReadValue();
-        float mousePosY = mousePos.y;
+        float mousePosY = Mouse.current.position.ReadValue().y;
 
 
         if (Input.GetMouseButtonDown(0))
-        { 
+        {
             if (mousePosY > 630) anim.SetTrigger("highHit");
             else if (mousePosY < 450) Debug.Log("no animation yet");
             else anim.SetTrigger("middleHit");
         }
-
-
 
         if (mousePosY > 630) angle = Mathf.PI/8;
         else if (mousePosY < 450) angle = -Mathf.PI / 8;
@@ -44,14 +40,5 @@ public class MeleeController : MonoBehaviour
             transform.parent.rotation.z + Mathf.Rad2Deg * angle * transform.parent.parent.localScale.x);
 
         transform.parent.rotation = Quaternion.Lerp(transform.parent.rotation, targetRotation, speed * Time.deltaTime);
-    }
-
-    private void ChangeAnimation(string animation, float crossfade = .2f)
-    {
-        if (currentAnimation != animation)
-        {
-            currentAnimation = animation;
-            anim.CrossFade(animation, crossfade);
-        }
     }
 }

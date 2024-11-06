@@ -162,14 +162,13 @@ GameObject:
   - component: {fileID: 281468381}
   - component: {fileID: 281468383}
   - component: {fileID: 281468384}
-  - component: {fileID: 281468385}
   m_Layer: 0
   m_Name: scarecrow
   m_TagString: Hittable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &281468381
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -254,7 +253,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 500
   currentHealth: 500
-  anim: {fileID: 281468385}
+  flashDuration: 0.1
+  flashMaterial: {fileID: 2100000, guid: 6d1d80c87a2a43548b3b54aca3946f5d, type: 2}
+  floatingText: {fileID: 5188171344981566750, guid: eb990a8ed549d4441857284c4d977c42, type: 3}
 --- !u!70 &281468384
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -292,28 +293,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.5178838}
   m_Size: {x: 2.4375, y: 2.4375}
   m_Direction: 0
---- !u!95 &281468385
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 281468380}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6d24fbffc052c46f7a77a7353160014c, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -567,7 +546,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!50 &727749299
 Rigidbody2D:
   serializedVersion: 5
@@ -968,13 +947,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1118107591}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d728881e9d9e43879fa0ea85d2f40b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   minSwipeLength: 10
-  requiredCurvature: 0.1
+  requiredCurvature: 60
   isSwipeActive: 0
 --- !u!1 &1315355384
 GameObject:

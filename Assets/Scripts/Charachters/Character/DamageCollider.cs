@@ -23,13 +23,15 @@ public class DamageCollider : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
+        int damage = Random.Range(13, 16);
+
         if (col.CompareTag("Hittable"))
         {
             var Character = col.GetComponent<CharacterStats>();
 
             if (Character != null)
             {
-                Character.TakeDamage(15);
+                Character.TakeDamage(damage);
             }
         }
         

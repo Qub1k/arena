@@ -109,10 +109,10 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Touch"",
-                    ""type"": ""Button"",
+                    ""name"": ""Mouse Position"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""3794f379-36ad-4b32-9c45-265c9719f770"",
-                    ""expectedControlType"": """",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -506,12 +506,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""0735c6aa-f730-42b5-a1b8-4d69db66a760"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": ""Press"",
+                    ""id"": ""df1b36e5-46a8-460e-8ebb-0f0c1f2f9bc2"",
+                    ""path"": ""<Pointer>/delta"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse;Touch"",
-                    ""action"": ""Touch"",
+                    ""action"": ""Mouse Position"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1108,7 +1108,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Player_Previous = m_Player.FindAction("Previous", throwIfNotFound: true);
         m_Player_Next = m_Player.FindAction("Next", throwIfNotFound: true);
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
-        m_Player_Touch = m_Player.FindAction("Touch", throwIfNotFound: true);
+        m_Player_MousePosition = m_Player.FindAction("Mouse Position", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1197,7 +1197,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Previous;
     private readonly InputAction m_Player_Next;
     private readonly InputAction m_Player_Sprint;
-    private readonly InputAction m_Player_Touch;
+    private readonly InputAction m_Player_MousePosition;
     public struct PlayerActions
     {
         private @InputSystem_Actions m_Wrapper;
@@ -1211,7 +1211,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         public InputAction @Previous => m_Wrapper.m_Player_Previous;
         public InputAction @Next => m_Wrapper.m_Player_Next;
         public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
-        public InputAction @Touch => m_Wrapper.m_Player_Touch;
+        public InputAction @MousePosition => m_Wrapper.m_Player_MousePosition;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1248,9 +1248,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Sprint.started += instance.OnSprint;
             @Sprint.performed += instance.OnSprint;
             @Sprint.canceled += instance.OnSprint;
-            @Touch.started += instance.OnTouch;
-            @Touch.performed += instance.OnTouch;
-            @Touch.canceled += instance.OnTouch;
+            @MousePosition.started += instance.OnMousePosition;
+            @MousePosition.performed += instance.OnMousePosition;
+            @MousePosition.canceled += instance.OnMousePosition;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1282,9 +1282,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Sprint.started -= instance.OnSprint;
             @Sprint.performed -= instance.OnSprint;
             @Sprint.canceled -= instance.OnSprint;
-            @Touch.started -= instance.OnTouch;
-            @Touch.performed -= instance.OnTouch;
-            @Touch.canceled -= instance.OnTouch;
+            @MousePosition.started -= instance.OnMousePosition;
+            @MousePosition.performed -= instance.OnMousePosition;
+            @MousePosition.canceled -= instance.OnMousePosition;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1476,7 +1476,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         void OnPrevious(InputAction.CallbackContext context);
         void OnNext(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
-        void OnTouch(InputAction.CallbackContext context);
+        void OnMousePosition(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

@@ -14,23 +14,26 @@ public class SwipeDetection : MonoBehaviour
     public bool isSwipeActive;
 
     private void Start(){
-        PlayerInputManager.Instance.InputActions.Player.Attack.performed += OnTouchPositionChanged;
+        PlayerInputManager.Instance.InputActions.Player.MousePosition.performed += OnTouchPositionChanged;
     }
     private void OnDisable(){
-        PlayerInputManager.Instance.InputActions.Player.Attack.performed -= OnTouchPositionChanged;
+        PlayerInputManager.Instance.InputActions.Player.MousePosition.performed -= OnTouchPositionChanged;
     }
     private void OnTouchPositionChanged(InputAction.CallbackContext context){
         Vector2 touchPos = Mouse.current.position.ReadValue();
 
-        if(Mouse.current.leftButton.IsPressed()){
-            if (!isSwipeActive){
+        if (Mouse.current.leftButton.isPressed)
+        {
+            if (!isSwipeActive)
+            {
                 StartSwipe(touchPos);
             }
 
             positions.Add(touchPos);
         }
-        else if (isSwipeActive){
-                EndSwipe();
+        else if (isSwipeActive)
+        {
+            EndSwipe();
         }
     }
     private void StartSwipe(Vector2 touchPosition){
@@ -38,17 +41,17 @@ public class SwipeDetection : MonoBehaviour
         initialPosition = touchPosition;
         positions.Clear();
         positions.Add(initialPosition);
-        Debug.Log("Swipe is started, inition position is " + initialPosition);
     }
     private void EndSwipe(){
         if(positions.Count > 2 && Vector2.Distance(positions[^1], initialPosition) >= minSwipeLength){
             if(isCurved(positions)){
-                Debug.Log("The Curved is drown");
+                Debug.Log("The curved line is drawn");
             }
             else{
-                Debug.Log("Straight line is drown");
+                Debug.Log("Straight line is drawn");
             }
         }
+        isSwipeActive=false;
     }
 
     private bool isCurved(List<Vector2> positions){

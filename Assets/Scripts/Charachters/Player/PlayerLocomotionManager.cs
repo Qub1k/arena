@@ -55,7 +55,6 @@ public class PlayerLocomotionManager : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col){
         if(col.gameObject.tag == "Ground"){
-            StartCoroutine(CameraController.Instance.Shake(.7f, .2f));
             isGrounded = true;
         }
     }

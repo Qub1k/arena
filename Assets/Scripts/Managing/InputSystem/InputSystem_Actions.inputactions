@@ -87,10 +87,10 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Touch",
-                    "type": "Button",
+                    "name": "Mouse Position",
+                    "type": "PassThrough",
                     "id": "3794f379-36ad-4b32-9c45-265c9719f770",
-                    "expectedControlType": "",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -484,12 +484,12 @@
                 },
                 {
                     "name": "",
-                    "id": "0735c6aa-f730-42b5-a1b8-4d69db66a760",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "Press",
+                    "id": "df1b36e5-46a8-460e-8ebb-0f0c1f2f9bc2",
+                    "path": "<Pointer>/delta",
+                    "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse;Touch",
-                    "action": "Touch",
+                    "action": "Mouse Position",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
