@@ -15,7 +15,7 @@ public class CharacterStats : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Material baseMaterial;
 
-    private List<GameObject> floatingPointsPool = new List<GameObject>();
+    private List<FloatingPoints> floatingPointsPool = new List<FloatingPoints>();
 
 
     private void Start()
@@ -24,7 +24,7 @@ public class CharacterStats : MonoBehaviour
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         baseMaterial = spriteRenderer.material;
-        InitializePool(3);
+
     }
 
     public void TakeDamage(int damage)
@@ -42,22 +42,13 @@ public class CharacterStats : MonoBehaviour
 
     private void ShowFloatingPoint()
     {
+        if(floatingPointsPool.Count == 0){
+            
+        }
         
     }
 
-    private void InitializePool(int capacity)
-    {
-        for (int i = 0; i < capacity; i++)
-        {
-            floatingPointsPool.Add(Instantiate(floatingText, transform));
-            floatingPointsPool[i].SetActive(false);
-        }
-    }
-    private void ExtendPool()
-    {
-        floatingPointsPool.Add(Instantiate(floatingText, transform));
-        floatingPointsPool[^1].SetActive(false);
-    }
+
     IEnumerator Flash(float duration)
     {
         float elapsed = 0f;
