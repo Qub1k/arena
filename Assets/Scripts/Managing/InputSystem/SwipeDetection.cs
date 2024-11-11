@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class SwipeDetection : MonoBehaviour
 {
+    [SerializeField] private SpecialAttacks attacks;
     [SerializeField] private float minSwipeLength;
     [SerializeField] private float requiredCurvature;
 
@@ -45,7 +46,7 @@ public class SwipeDetection : MonoBehaviour
     private void EndSwipe(){
         if(positions.Count > 2 && Vector2.Distance(positions[^1], initialPosition) >= minSwipeLength){
             if(isCurved(positions)){
-                Debug.Log("The curved line is drawn");
+                StartCoroutine(attacks.HandleUppercut());
             }
             else{
                 Debug.Log("Straight line is drawn");

@@ -10,12 +10,14 @@ public class CharacterStats : MonoBehaviour
     [SerializeField] private int currentHealth;
     [SerializeField] private float flashDuration;
     [SerializeField] private Material flashMaterial;
-    [SerializeField] private GameObject floatingText;
+    [SerializeField] private FloatingPoints floatingText;
 
     private SpriteRenderer spriteRenderer;
     private Material baseMaterial;
 
-    private List<FloatingPoints> floatingPointsPool = new List<FloatingPoints>();
+    [SerializeField] private List<FloatingPoints> floatingPointsPool = new List<FloatingPoints>();
+
+    public List<FloatingPoints> Pool => floatingPointsPool;
 
 
     private void Start()
@@ -24,7 +26,6 @@ public class CharacterStats : MonoBehaviour
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         baseMaterial = spriteRenderer.material;
-
     }
 
     public void TakeDamage(int damage)
@@ -33,6 +34,7 @@ public class CharacterStats : MonoBehaviour
 
         StartCoroutine(Flash(flashDuration));
         StartCoroutine(CameraController.Instance.Shake(.15f, 0.03f));
+        ShowFloatingPoint(damage);
 
         if (currentHealth <= 0)
         {
@@ -40,14 +42,39 @@ public class CharacterStats : MonoBehaviour
         }
     }
 
-    private void ShowFloatingPoint()
+    private void ShowFloatingPoint(int damage)
     {
-        if(floatingPointsPool.Count == 0){
-            
-        }
-        
-    }
+        var temp = CheckForAvailabeText();
 
+        if (!temp)
+        {
+            temp = AddToPool();
+        }
+
+        temp.Text.text = damage.ToString();
+
+        temp.gameObject.SetActive(true);
+        StartCoroutine(temp.Float(1f, 6f, 2f));
+    }
+    private FloatingPoints CheckForAvailabeText()
+    {
+        foreach(var text in floatingPointsPool)
+        {
+            if (text.IsAvailable)
+            {
+                return text;
+            }
+        }
+        return null;
+    }
+    private FloatingPoints AddToPool()
+    {
+        var temp = Instantiate(floatingText,transform.position + new Vector3(0f, 1.5f, 0f), Quaternion.identity, transform);
+        floatingPointsPool.Add(temp);
+
+        temp.gameObject.SetActive(false);
+        return temp;
+    }
 
     IEnumerator Flash(float duration)
     {

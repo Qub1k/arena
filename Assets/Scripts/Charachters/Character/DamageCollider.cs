@@ -2,23 +2,16 @@ using UnityEngine;
 
 public class DamageCollider : MonoBehaviour
 {
-    public PolygonCollider2D damageCollider;
+    private Collider2D col;
+
+    public Collider2D Col => col;
 
     private void Awake()
     {
-        damageCollider = GetComponent<PolygonCollider2D>();
-        damageCollider.gameObject.SetActive(true);
-        damageCollider.isTrigger = true;
-        damageCollider.enabled = false;
-    }
-
-    public void EnableDamageCollider()
-    {
-        damageCollider.enabled = true;
-    }
-    public void DisableDamageCollider()
-    {
-        damageCollider.enabled = false;
+        col = GetComponent<Collider2D>();
+        col.gameObject.SetActive(true);
+        col.isTrigger = true;
+        col.enabled = false;
     }
 
     private void OnTriggerEnter2D(Collider2D col)
