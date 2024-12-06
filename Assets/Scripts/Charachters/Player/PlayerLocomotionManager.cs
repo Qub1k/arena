@@ -33,12 +33,12 @@ public class PlayerLocomotionManager : MonoBehaviour
         playerInput = PlayerInputManager.Instance.MovementInput;
         Flip();
 
-        rb.linearVelocityX = playerInput.x * Time.fixedDeltaTime * speed * 100;
+        rb.linearVelocity = playerInput * Time.fixedDeltaTime * speed * 100;
     }
 
     private void Flip()
     {
-        if(isFacingRight && transform.position.x > enemy.position.x || !isFacingRight && transform.position.x < enemy.position.x)
+        if(isFacingRight && playerInput.x < 0 || !isFacingRight && playerInput.x > 0)
         {
 
             isFacingRight = !isFacingRight;
