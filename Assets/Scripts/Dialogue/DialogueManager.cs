@@ -11,10 +11,11 @@ public class DialogueManager : MonoBehaviour
 	public TextMeshProUGUI dialogueText;
 
     [SerializeField] private float textSpeed;
+	[SerializeField] private Vector3 targetPos;
 
     private string currentSentence;
-
-    
+	private Transform dialogueWindow;
+	private Vector3 initialPosition;    
 
 	//public Animator animator;
 
@@ -28,7 +29,9 @@ public class DialogueManager : MonoBehaviour
 
 	public void StartDialogue (Dialogue dialogue)
 	{
+		StartCoroutine(OpenDialogeWindow());
 		//animator.SetBool("IsOpen", true);
+		Debug.Log("Dialogue is started");
 
 		nameText.text = dialogue.name;
 
@@ -49,13 +52,14 @@ public class DialogueManager : MonoBehaviour
         {
             StopAllCoroutines();
             IsPhraseEnded = true;
-            StartCoroutine(TypeSentence(currentSentence, 0f));
+            dialogueText.text = currentSentence;
             return;
         }
 
 		if (sentences.Count == 0) //если нет фраз конец
 		{
 			EndDialogue();
+			StartCoroutine(CloseDialogeWindow());
 			return;
 		}
 
@@ -106,6 +110,30 @@ public class DialogueManager : MonoBehaviour
 	{
         Debug.Log("EndOfDilogue");
 		//animator.SetBool("IsOpen", false);
+	}
+
+	public IEnumerator OpenDialogeWindow(){
+		float elapsed = 0f;
+		float duration = .5f;
+
+        while (elapsed < duration)
+		{
+			dialogueWindow.position = Vector3.Lerp(initialPosition, targetPos, elapsed);
+			elapsed += Time.fixedDeltaTime;
+			yield return null;
+		}
+	}
+	public IEnumerator CloseDialogeWindow(){
+		float elapsed = 0f;
+		float duration = .5f;
+
+        while (elapsed < duration)
+		{
+			dialogueWindow.position = Vector3.Lerp(targetPos, initialPosition, elapsed);
+			elapsed += Time.fixedDeltaTime;
+			yield return null;
+
+		}
 	}
 
 }
