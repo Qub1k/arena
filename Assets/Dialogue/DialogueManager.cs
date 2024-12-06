@@ -3,17 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using NUnit.Framework;
 
 public class DialogueManager : MonoBehaviour
 {
     public TextMeshProUGUI nameText;
 	public TextMeshProUGUI dialogueText;
 
-    [SerializeField] private float _textSpeed;
+    [SerializeField] private float textSpeed;
+
+    private string currentSentence;
+
+    
 
 	//public Animator animator;
 
 	private Queue<string> sentences;
+    private bool IsPhraseEnded = true;
 
 	// Use this for initialization
 	void Start () {
@@ -28,36 +34,73 @@ public class DialogueManager : MonoBehaviour
 
 		sentences.Clear();
 
-		foreach (string sentence in dialogue.sentences)
+		foreach (string sentence in dialogue.sentences) //назначаем все заготовленные диалоги в очередь
 		{
-			sentences.Enqueue(sentence);
+			sentences.Enqueue(sentence); 
 		}
 
-		DisplayNextSentence();
+        
+		DisplayNextSentence(); //первый диалог вызывает сразу в начале
 	}
 
-	public void DisplayNextSentence ()
+	public void DisplayNextSentence () //это буит по кнопке
 	{
-		if (sentences.Count == 0)
+        if (!IsPhraseEnded) //если фраза не закончилось он то ее моментально выводит 
+        {
+            StopAllCoroutines();
+            IsPhraseEnded = true;
+            StartCoroutine(TypeSentence(currentSentence, 0f));
+            return;
+        }
+
+		if (sentences.Count == 0) //если нет фраз конец
 		{
 			EndDialogue();
 			return;
 		}
 
-		string sentence = sentences.Dequeue();
-		StopAllCoroutines();
-		StartCoroutine(TypeSentence(sentence));
+        
+
+		currentSentence = sentences.Dequeue(); //удаляется и возвращает первый эл в очереди
+
+        
+
+		StopAllCoroutines();  //прерывает все коррутины
+		StartCoroutine(TypeSentence(currentSentence, .1f));
+
+
 	}
 
-	IEnumerator TypeSentence (string sentence)
+	IEnumerator TypeSentence (string sentence, float delay)
 	{
+        
+        IsPhraseEnded = false;
+
 		dialogueText.text = "";
 		foreach (char letter in sentence.ToCharArray())
 		{
+
 			dialogueText.text += letter;
-			yield return new WaitForSeconds(_textSpeed);
+
+            
+			yield return new WaitForSeconds(delay);
+            
 		}
+        
+        IsPhraseEnded = true;
+
+
+
+        EndOfPhrase();
+
+        
+        
 	}
+    
+
+    private void EndOfPhrase(){
+        Debug.Log("конец месседжа");
+    }
 
 	void EndDialogue()
 	{
