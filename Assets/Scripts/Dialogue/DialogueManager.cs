@@ -14,7 +14,7 @@ public class DialogueManager : MonoBehaviour
 	[SerializeField] private Vector3 targetPos;
 
     private string currentSentence;
-	private Transform dialogueWindow;
+	[SerializeField] private Transform dialogueWindow;
 	private Vector3 initialPosition;    
 
 	//public Animator animator;
@@ -25,13 +25,13 @@ public class DialogueManager : MonoBehaviour
 	// Use this for initialization
 	void Start () {
 		sentences = new Queue<string>();
+		dialogueWindow.gameObject.SetActive(false);
 	}
 
 	public void StartDialogue (Dialogue dialogue)
 	{
-		StartCoroutine(OpenDialogeWindow());
+		dialogueWindow.gameObject.SetActive(true);
 		//animator.SetBool("IsOpen", true);
-		Debug.Log("Dialogue is started");
 
 		nameText.text = dialogue.name;
 
@@ -59,7 +59,7 @@ public class DialogueManager : MonoBehaviour
 		if (sentences.Count == 0) //если нет фраз конец
 		{
 			EndDialogue();
-			StartCoroutine(CloseDialogeWindow());
+			dialogueWindow.gameObject.SetActive(false);
 			return;
 		}
 
@@ -71,8 +71,6 @@ public class DialogueManager : MonoBehaviour
 
 		StopAllCoroutines();  //прерывает все коррутины
 		StartCoroutine(TypeSentence(currentSentence, .1f));
-
-
 	}
 
 	IEnumerator TypeSentence (string sentence, float delay)
@@ -112,28 +110,5 @@ public class DialogueManager : MonoBehaviour
 		//animator.SetBool("IsOpen", false);
 	}
 
-	public IEnumerator OpenDialogeWindow(){
-		float elapsed = 0f;
-		float duration = .5f;
-
-        while (elapsed < duration)
-		{
-			dialogueWindow.position = Vector3.Lerp(initialPosition, targetPos, elapsed);
-			elapsed += Time.fixedDeltaTime;
-			yield return null;
-		}
-	}
-	public IEnumerator CloseDialogeWindow(){
-		float elapsed = 0f;
-		float duration = .5f;
-
-        while (elapsed < duration)
-		{
-			dialogueWindow.position = Vector3.Lerp(targetPos, initialPosition, elapsed);
-			elapsed += Time.fixedDeltaTime;
-			yield return null;
-
-		}
-	}
 
 }

@@ -322,6 +322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc3eedb0216fc4900a0093c76da16e16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetPos: {x: 0, y: 0, z: 0}
   dialogue:
     name: TYUgh
     sentences:
@@ -413,20 +414,50 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1318625280}
     m_Modifications:
+    - target: {fileID: 847836443939607015, guid: bdc3d882412ab42fd9db985fe8fa70d0,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 324.1418
+      objectReference: {fileID: 0}
+    - target: {fileID: 847836443939607015, guid: bdc3d882412ab42fd9db985fe8fa70d0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -107.92908
+      objectReference: {fileID: 0}
     - target: {fileID: 2708219348523057213, guid: bdc3d882412ab42fd9db985fe8fa70d0,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1379718629}
+      objectReference: {fileID: 1118107595}
     - target: {fileID: 2708219348523057213, guid: bdc3d882412ab42fd9db985fe8fa70d0,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Interact
+      value: DisplayNextSentence
       objectReference: {fileID: 0}
     - target: {fileID: 2708219348523057213, guid: bdc3d882412ab42fd9db985fe8fa70d0,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: DialogueTrigger, Assembly-CSharp
+      value: DialogueManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5123287829776960398, guid: bdc3d882412ab42fd9db985fe8fa70d0,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5123287829776960398, guid: bdc3d882412ab42fd9db985fe8fa70d0,
+        type: 3}
+      propertyPath: m_fontSizeMin
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 5123287829776960398, guid: bdc3d882412ab42fd9db985fe8fa70d0,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5123287829776960398, guid: bdc3d882412ab42fd9db985fe8fa70d0,
+        type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5126795925046890518, guid: bdc3d882412ab42fd9db985fe8fa70d0,
         type: 3}
@@ -441,7 +472,7 @@ PrefabInstance:
     - target: {fileID: 5126795925046890518, guid: bdc3d882412ab42fd9db985fe8fa70d0,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5126795925046890518, guid: bdc3d882412ab42fd9db985fe8fa70d0,
         type: 3}
@@ -451,7 +482,7 @@ PrefabInstance:
     - target: {fileID: 5126795925046890518, guid: bdc3d882412ab42fd9db985fe8fa70d0,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5126795925046890518, guid: bdc3d882412ab42fd9db985fe8fa70d0,
         type: 3}
@@ -461,7 +492,7 @@ PrefabInstance:
     - target: {fileID: 5126795925046890518, guid: bdc3d882412ab42fd9db985fe8fa70d0,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 625.08545
+      value: 1920
       objectReference: {fileID: 0}
     - target: {fileID: 5126795925046890518, guid: bdc3d882412ab42fd9db985fe8fa70d0,
         type: 3}
@@ -506,7 +537,7 @@ PrefabInstance:
     - target: {fileID: 5126795925046890518, guid: bdc3d882412ab42fd9db985fe8fa70d0,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -312.54272
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5126795925046890518, guid: bdc3d882412ab42fd9db985fe8fa70d0,
         type: 3}
@@ -528,19 +559,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5181773703922484402, guid: bdc3d882412ab42fd9db985fe8fa70d0,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 5181773703922484402, guid: bdc3d882412ab42fd9db985fe8fa70d0,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 7569578904672978611, guid: bdc3d882412ab42fd9db985fe8fa70d0,
         type: 3}
       propertyPath: m_Name
-      value: f
+      value: Dialogue Window
+      objectReference: {fileID: 0}
+    - target: {fileID: 7569578904672978611, guid: bdc3d882412ab42fd9db985fe8fa70d0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8982260376759921327, guid: bdc3d882412ab42fd9db985fe8fa70d0,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1379718629}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bdc3d882412ab42fd9db985fe8fa70d0, type: 3}
 --- !u!1 &261964410
 GameObject:
@@ -1411,7 +1453,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1118107593}
   - component: {fileID: 1118107592}
-  - component: {fileID: 1118107594}
   - component: {fileID: 1118107595}
   m_Layer: 0
   m_Name: GameManager
@@ -1448,22 +1489,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1118107594
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1118107591}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d728881e9d9e43879fa0ea85d2f40b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attacks: {fileID: 0}
-  minSwipeLength: 50
-  requiredCurvature: 60
-  isSwipeActive: 0
 --- !u!114 &1118107595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1478,7 +1503,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameText: {fileID: 1588135033}
   dialogueText: {fileID: 1413748350}
-  textSpeed: 0.1
+  textSpeed: 0.05
+  targetPos: {x: 0, y: 119.2666, z: 0}
+  dialogueWindow: {fileID: 202299455}
 --- !u!1 &1318625276
 GameObject:
   m_ObjectHideFlags: 0
@@ -1581,27 +1608,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &1379718624 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8982260376759921327, guid: bdc3d882412ab42fd9db985fe8fa70d0,
-    type: 3}
-  m_PrefabInstance: {fileID: 236358163}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1379718629
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1379718624}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc3eedb0216fc4900a0093c76da16e16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogue:
-    name: 
-    sentences: []
 --- !u!114 &1413748350 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8527235680737509056, guid: bdc3d882412ab42fd9db985fe8fa70d0,
@@ -1805,7 +1811,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1907268921
 Transform:
   m_ObjectHideFlags: 0
