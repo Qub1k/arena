@@ -21,6 +21,9 @@ public class Player : MonoBehaviour
         {
             ChangeAnimation("attack3", 0f);
         }
+        if (Input.GetKeyDown(KeyCode.E)){
+            CutsceneManager.Instance.StartCutscene("1");
+        }
     }
 
     private void ChangeAnimation(string animation, float duration)
