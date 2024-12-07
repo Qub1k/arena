@@ -72,12 +72,15 @@ public class Infected : MonoBehaviour
             isHoldingPlayer = false;
             incorrectPressCount = 0;
             Debug.Log("win");
+            Destroy(gameObject);
         }
         if(incorrectPressCount >= 5) //поражение
         {
+            player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
             isHoldingPlayer = false;
             incorrectPressCount = 0;
             Debug.Log("вас заразили");
+            Destroy(gameObject);    
         }
 
         
