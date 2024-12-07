@@ -27,7 +27,6 @@ public class PlayerLocomotionManager : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
     }
-
     void FixedUpdate()
     {   
         playerInput = PlayerInputManager.Instance.MovementInput;
