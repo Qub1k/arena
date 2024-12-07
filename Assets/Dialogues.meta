@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Dialogues.meta
 guid: ac8c8536050bd49f5a0dce2b46136dd2
+========
+guid: 1bf17f10e03c1924dbfdd18d35932e2a
+>>>>>>>> 8de431e00f27002d62d1678262bbff3ce5b529cd:Assets/Ink.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

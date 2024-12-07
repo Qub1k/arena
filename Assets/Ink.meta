@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Ink.meta
 guid: 1bf17f10e03c1924dbfdd18d35932e2a
+========
+guid: 17f3a73e2c97e4fc7a9c07cb14b88e2c
+>>>>>>>> 8de431e00f27002d62d1678262bbff3ce5b529cd:Assets/Ink/Documentation.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

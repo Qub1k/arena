@@ -20,45 +20,55 @@ public class PlayerLocomotionManager : MonoBehaviour
     private Vector2 playerInput;
     private bool isFacingRight = true;
     private Action onGrounded;
+    private Animator anim;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-
-      
+        anim = GetComponent<Animator>();
     }
-
     void FixedUpdate()
     {   
         playerInput = PlayerInputManager.Instance.MovementInput;
+<<<<<<< HEAD
         Flip();
         
+=======
+        //Flip();
+
+        if(CutsceneManager.activeCutscene){
+            rb.linearVelocity = Vector2.zero;
+            return;
+        } 
+
+>>>>>>> 8de431e00f27002d62d1678262bbff3ce5b529cd
         rb.linearVelocity = playerInput * Time.fixedDeltaTime * speed * 100;
-        if(CutsceneManager.activeCutscene) rb.linearVelocity = Vector2.zero;
+
+        if(playerInput.x > 0){
+            anim.Play("run_right");
+        }
+        else if(playerInput.x < 0){
+            anim.Play("run_left");
+        }
+        else if(playerInput.y > 0){
+            anim.Play("run_backwards");
+        }
+        else if(playerInput.y < 0){
+            anim.Play("run_forward");
+        }
+        else{
+            anim.Play("idle");
+        }
     }
 
     private void Flip()
     {
         if(isFacingRight && playerInput.x < 0 || !isFacingRight && playerInput.x > 0)
         {
-
             isFacingRight = !isFacingRight;
             Vector2 localScale = transform.localScale;
             localScale.x *= -1f;
             transform.localScale = localScale;
-        }
-    }
-
-    
-
-    private void OnCollisionEnter2D(Collision2D col){
-        if(col.gameObject.tag == "Ground"){
-            isGrounded = true;
-        }
-    }
-    private void OnCollisionExit2D(Collision2D col){
-        if(col.gameObject.tag == "Ground"){
-            isGrounded = false;
         }
     }
 }
