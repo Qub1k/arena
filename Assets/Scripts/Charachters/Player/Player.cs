@@ -10,10 +10,4 @@ public class Player : MonoBehaviour
         damageCollider = GetComponentInChildren<DamageCollider>();
         anim = GetComponent<Animator>();
     }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E)){
-            CutsceneManager.Instance.StartCutscene("1");
-        }
-    }
 }
