@@ -31,21 +31,31 @@ public class Infected : MonoBehaviour
     public float holdTime = 1;
 
     
+    private float deltaTime;
+    private int numberOfClicks = 0;
+    [SerializeField] private float expectedCPS = 6;
+    private float timePassed = 0;
+    float portionOfElement = 0;
+
+
+    
 
 
     public Player player;
 
     [SerializeField] private Image _fillImage;
+    [SerializeField] private Image _armanImage;
+
 
     void Start()
     {
         // Инициализация таймера
-        player = FindAnyObjectByType<Player>();
-        _fillImage = FindAnyObjectByType<FillingQTE>().GetComponent<Image>();
+
     }
 
     void Update()
     {   
+        ClickQTE();
 
         // Проверяем расстояние до игрока
         float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
@@ -72,6 +82,7 @@ public class Infected : MonoBehaviour
             isHoldingPlayer = false;
             incorrectPressCount = 0;
             Debug.Log("win");
+            _fillImage.fillAmount = 0;
             Destroy(gameObject);
         }
         if(incorrectPressCount >= 5) //поражение
@@ -118,7 +129,24 @@ public class Infected : MonoBehaviour
         
     }
 
-    
+    private void ClickQTE(){
+        timePassed += Time.deltaTime;
+        float currentCPS = numberOfClicks / timePassed;
+        portionOfElement = currentCPS / expectedCPS;
+
+        Debug.Log(currentCPS);
+        if (Input.GetKeyDown(KeyCode.Y)){
+            numberOfClicks += 1;
+        }
+
+        if (timePassed >= 3){
+            timePassed = 1;
+            numberOfClicks = System.Convert.ToInt32(timePassed * currentCPS);
+        }
+
+        _armanImage.fillAmount = portionOfElement;
+
+    }
 
 
     void QTEButtonInit() //инициализируется и отображается рандомная кнопка
