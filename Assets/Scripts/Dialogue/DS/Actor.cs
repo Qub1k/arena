@@ -1,21 +1,17 @@
 using UnityEngine;
  
-public class Actor : MonoBehaviour
+public class Actor : MonoBehaviour, IInteractable
 {
     public string Name;
     public DialogueSO Dialogue;
  
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            SpeakTo();
-        }
-    }
- 
     // Trigger dialogue for this actor
-    public void SpeakTo()
+    public void PlayDialogue()
     {
         DialogueController.Instance.StartDialogue(Name, Dialogue.RootNode);
+    }
+    public void Interact()
+    {
+        PlayDialogue();
     }
 }
