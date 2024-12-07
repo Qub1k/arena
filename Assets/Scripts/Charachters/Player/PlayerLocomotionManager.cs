@@ -25,7 +25,7 @@ public class PlayerLocomotionManager : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 
-        PlayerInputManager.Instance.InputActions.Player.Jump.performed += i => Jump();
+      
     }
 
     void FixedUpdate()
@@ -49,10 +49,7 @@ public class PlayerLocomotionManager : MonoBehaviour
         }
     }
 
-    public void Jump(){
-        if(isGrounded)
-            rb.AddForce(Vector2.up * jumpHeight, ForceMode2D.Impulse);
-    }
+    
 
     private void OnCollisionEnter2D(Collision2D col){
         if(col.gameObject.tag == "Ground"){

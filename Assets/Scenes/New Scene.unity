@@ -364,6 +364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc3eedb0216fc4900a0093c76da16e16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetPos: {x: 0, y: 0, z: 0}
   dialogue:
     name: Amir
     sentences:
@@ -642,6 +643,8 @@ MonoBehaviour:
   nameText: {fileID: 1873762809}
   dialogueText: {fileID: 979167159}
   textSpeed: 0.05
+  targetPos: {x: 0, y: 0, z: 0}
+  dialogueWindow: {fileID: 0}
 --- !u!4 &813997802
 Transform:
   m_ObjectHideFlags: 0
@@ -664,11 +667,19 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 8634560455244102626}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!222 &979167160
+CanvasRenderer:
+  m_ObjectHideFlags: 8
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_CullTransparentMesh: 1
 --- !u!1 &1341070212
 GameObject:
   m_ObjectHideFlags: 0
@@ -707,11 +718,19 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 8634560455244102626}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!222 &1873762810
+CanvasRenderer:
+  m_ObjectHideFlags: 8
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_CullTransparentMesh: 1
 --- !u!1 &2018327203
 GameObject:
   m_ObjectHideFlags: 0
