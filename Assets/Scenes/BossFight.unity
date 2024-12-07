@@ -258,13 +258,14 @@ MonoBehaviour:
   stoppingDistance: 2
   icon: {fileID: 1029493437}
   buttonIcons:
-  - {fileID: 7482667652216324306, guid: 69d9d04e7c25647ed88647d4d38e5f9e, type: 3}
-  - {fileID: 7482667652216324306, guid: 3376aef3fb15f46b2924d72e1d2f4097, type: 3}
-  - {fileID: 3625043607559282579, guid: 28413fd31d6e14d7f82f1eaa8e88329b, type: 3}
-  - {fileID: -2413806693520163455, guid: 16b370decaf844c14bec25845255874c, type: 3}
+  - {fileID: -1918161276, guid: d35306edd717543dea8ba71361d5d478, type: 3}
+  - {fileID: 512034484, guid: d35306edd717543dea8ba71361d5d478, type: 3}
+  - {fileID: 1484679824, guid: d35306edd717543dea8ba71361d5d478, type: 3}
+  - {fileID: 1474673323, guid: d35306edd717543dea8ba71361d5d478, type: 3}
   correctPressCount: 0
   incorrectPressCount: 0
   isHoldingPlayer: 1
+  holdTime: 1
   player: {fileID: 0}
   _fillImage: {fileID: 0}
 --- !u!1 &1029493435
@@ -436,8 +437,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1029493436}
   - {fileID: 1396835255}
+  - {fileID: 1029493436}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -681,8 +682,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 699.63, y: 266}
+  m_SizeDelta: {x: 193.2646, y: 168.5209}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1396835256
 MonoBehaviour:
@@ -709,7 +710,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.77254903}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -722,7 +723,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 0.63
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0

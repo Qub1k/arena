@@ -32,7 +32,7 @@ public class PlayerLocomotionManager : MonoBehaviour
     {   
         playerInput = PlayerInputManager.Instance.MovementInput;
         Flip();
-
+        
         rb.linearVelocity = playerInput * Time.fixedDeltaTime * speed * 100;
         if(CutsceneManager.activeCutscene) rb.linearVelocity = Vector2.zero;
     }
